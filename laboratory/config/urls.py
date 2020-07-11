@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from mylab import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mylab.urls')),
+    path('mylab', include('mylab.urls')),
+    path('', views.index, name='index'),
     path('common/', include('common.urls')),
 ]
