@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>글쓰기</title>
+{% endblock %}
+{% block content %}
+<div class="bb">
+    <h2>글쓰기</h2>
+    <form method="post">
+    {% csrf_token %}
+        <div>
+            <label for="subject">제목</label>
+            <input type="text" name="subject" id="subject"
+                   value="{{ form.subject.value|default_if_none:'' }}">
+        </div>
+        <div>
+            <label for="content">내용</label>
+            <textarea name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+        </div>
+        <button type="submit">저장하기</button>
+    </form>
+</div>
+{% endblock %}

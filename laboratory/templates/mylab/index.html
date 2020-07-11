@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>내 실험실</title>
+{% endblock %}
+{% block content %}
+<div class="bb main clearfix">
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th style="width:70%;">제목</th>
+                <th>작성일시</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if post_list %}
+            {% for post in post_list %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>
+                    <a href="{% url 'mylab:post_detail' post.id %}">{{ post.subject }}</a>
+                </td>
+                <td>{{ post.create_date }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'mylab:post_create' %}" style="float: right;">글쓰기</a>
+</div>
+{% endblock %}
