@@ -77,3 +77,10 @@ a:hover {
     height: 100%;
     line-height: 52px;
 }
+
+.nav-link:link, .nav-link:visited {
+    color: gray;
+}
+.nav-link:hover{
+    color: #606060
+}
