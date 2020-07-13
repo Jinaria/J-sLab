@@ -11,9 +11,16 @@
         <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     </head>
     <body>
-        {% include 'navbar.html' %}
-        {% block content %}
-        {% endblock %}
+        {% include 'header.html' %}
+        <main>
+            <div style="position: absolute; background-color: red; width: 210px; height: 500px;">
+                {% include 'left-nav.html' %}
+            </div>
+            <div style="margin-left: 220px;">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
         {% include 'footer.html' %}
     </body>
 </html>
