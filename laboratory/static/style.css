@@ -93,3 +93,38 @@ a:hover {
     color: #606060;
     background-color: #b0efb0;
 }
+
+.pagination {
+    list-style: none;
+    padding: 0px 40px 0px;
+    margin: 50px auto 0;
+    display: table;
+    text-align: center;
+}
+
+.page-item {
+    float: left;
+    border: 1px solid gray;
+    padding: 3px;
+    width: 40px;
+    text-align: center;
+}
+
+.btn {
+    border-radius: 15%;
+    border: 1px solid gray;
+    margin: 2px;
+    padding: 3px 5px;
+    background-color: lightgray;
+}
+.bth :hover {
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid gray;
+}
+.disabled a{
+    color: gray;
+}
+.disabled a:hover{
+    color: gray;
+}

@@ -7,6 +7,7 @@
     <h2>글쓰기</h2>
     <form method="post">
     {% csrf_token %}
+    {% include 'form_errors.html' %}
         <div>
             <label for="subject">제목</label>
             <input type="text" name="subject" id="subject"

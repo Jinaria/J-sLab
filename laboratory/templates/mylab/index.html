@@ -8,7 +8,8 @@
         <thead>
             <tr>
                 <th>번호</th>
-                <th style="width:70%;">제목</th>
+                <th style="width:50%;">제목</th>
+                <th>글쓴이</th>
                 <th>작성일시</th>
             </tr>
         </thead>
@@ -17,15 +18,47 @@
             {% for post in post_list %}
             <tr>
                 <td>{{ post.id }}</td>
-                <td>
+                <td style="text-align: left;">
                     <a href="{% url 'mylab:post_detail' post.id %}">{{ post.subject }}</a>
                 </td>
+                <td>{{ post.author.username }}</td>
                 <td>{{ post.create_date }}</td>
             </tr>
             {% endfor %}
             {% endif %}
         </tbody>
     </table>
-    <a href="{% url 'mylab:post_create' %}" style="float: right;">글쓰기</a>
+    <ul class="pagination clearfix">
+        {% if post_list.has_previous %}
+        <li class="page-item">
+            <a href="?page={{ post_list.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        {% for page_number in post_list.paginator.page_range %}
+            {% if page_number == post_list.number %}
+            <li class="page-item" aria-current="page" style="background-color: lightblue;">
+                <a href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a href="?page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        {% if post_list.has_next %}
+        <li class="page-item">
+            <a href="?page={{ post_list.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a tabindex="-1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <a href="{% url 'mylab:post_create' %}" class="btn" style="float: right;">글쓰기</a>
 </div>
 {% endblock %}
