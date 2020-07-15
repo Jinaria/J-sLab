@@ -111,17 +111,20 @@ a:hover {
 }
 
 .btn {
-    border-radius: 15%;
-    border: 1px solid gray;
-    margin: 2px;
-    padding: 3px 5px;
-    background-color: lightgray;
+    background-color: honeydew;
+    padding: 2px 5px 2px;
+    margin: 0px 3px 0px;
+    border: 1px solid #b0efb0;
+    border-radius: 5px;
 }
-.bth :hover {
-    border-radius: 50%;
-    background-color: black;
-    border: 1px solid gray;
+.btn:hover {
+    color: #606060;
+    background-color: #b0efb0;
 }
+.btn:link, .btn:visited{
+    color: gray;
+}
+
 .disabled a{
     color: gray;
 }

@@ -29,6 +29,9 @@
         </tbody>
     </table>
     <ul class="pagination clearfix">
+        <li class="page-item">
+            <a href="?page=1"><<</a>
+        </li>
         {% if post_list.has_previous %}
         <li class="page-item">
             <a href="?page={{ post_list.previous_page_number }}">이전</a>
@@ -39,6 +42,7 @@
         </li>
         {% endif %}
         {% for page_number in post_list.paginator.page_range %}
+        {% if page_number >= post_list.number|add:-5 and page_number <= post_list.number|add:5 %}
             {% if page_number == post_list.number %}
             <li class="page-item" aria-current="page" style="background-color: lightblue;">
                 <a href="?page={{ page_number }}">{{ page_number }}</a>
@@ -48,6 +52,7 @@
                 <a href="?page={{ page_number }}">{{ page_number }}</a>
             </li>
             {% endif %}
+        {% endif %}
         {% endfor %}
         {% if post_list.has_next %}
         <li class="page-item">
@@ -58,6 +63,9 @@
             <a tabindex="-1" aria-disabled="true" href="#">다음</a>
         </li>
         {% endif %}
+        <li class="page-item">
+            <a href="?page={{ post_list.paginator.num_pages }}">>></a>
+        </li>
     </ul>
     <a href="{% url 'mylab:post_create' %}" class="btn" style="float: right;">글쓰기</a>
 </div>
