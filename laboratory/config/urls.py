@@ -20,7 +20,7 @@ from mylab import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mylab/', include('mylab.urls')),
+    path('', include('mylab.urls')),
     path('', views.index, name='index'),
     path('common/', include('common.urls')),
 ]

@@ -21,6 +21,18 @@ def index(request):
     context = {'post_list':page_obj}
     return render(request, "mylab/index.html", context)
 
+def category(request, post_type):
+    page = request.GET.get('page', '1')
+
+    post_list = Post.objects.filter(category=post_type).order_by('-create_date')
+
+    paginator = Paginator(post_list, 10)
+    page_obj = paginator.get_page(page)
+
+    context = {'post_list':page_obj, 'post_type':post_type}
+    return render(request, "mylab/category.html", context)
+
+
 @login_required(login_url='common:login')
 def post_create(request):
     if request.method == "POST":
