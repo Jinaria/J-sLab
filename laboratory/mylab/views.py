@@ -56,3 +56,22 @@ def post_detail(request, post_id):
 
 # def post_modify(request, post_id):
 #     post = Post.objects.get(pk=post_id)
+#     if request.method == "POST":
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.modify_date = timezone.now()
+#             post.save()
+#             return redirect('mylab:post_detail', post_id)
+#     else:
+#         form = PostForm()
+#         form.
+    
+        
+
+def post_delete(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+
+    return index(request)
+
